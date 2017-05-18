@@ -14,7 +14,7 @@ import com.catchmind.pro.gui.Window_Room;
 import com.catchmind.pro.gui.Window_UserSearch;
 
 /*
- * ÃÖÁ¾ ¾÷µ¥ÀÌÆ® ³¯Â¥ :4¿ù 28ÀÏ
+ * ìµœì¢… ì—…ë°ì´íŠ¸ ë‚ ì§œ :4ì›” 28ì¼
  */
 public class Client_Launcher {
 
@@ -24,7 +24,7 @@ public class Client_Launcher {
 	private BufferedReader br;
 
 	private Window_Login login_frame;
-	
+	/* test test */
 	private Client_Telecom room_protocol;
 	public Client_Launcher() {
 		login_frame = new Window_Login(this);
@@ -51,7 +51,7 @@ public class Client_Launcher {
 		this.login_frame = window_Login;
 	}
 
-	public void login(String id, String password) {// ·Î±×ÀÎ
+	public void login(String id, String password) {// ë¡œê·¸ì¸
 		try {
 			br = new BufferedReader(new InputStreamReader(soc.getInputStream()));
 			pw = new PrintWriter(soc.getOutputStream());
@@ -63,13 +63,13 @@ public class Client_Launcher {
 			System.out.println(msg);
 			if (msg != null && msg.equals("@loginOK")) {
 				login_frame.dispose();
-				JOptionPane.showMessageDialog(null, "·Î±×ÀÎ ¼º°ø!!");
+				JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ ì„±ê³µ!!");
 				this.room_protocol = new Client_Telecom(this);
 			}else if(msg != null && msg.equals("@accepting")){
-				System.out.println("[Á¢¼ÛÁß]");
-				JOptionPane.showMessageDialog(null, "ÀÌ¹Ì Á¢¼ÓÁßÀÎ °èÁ¤ÀÔ´Ï´Ù.!!");
+				System.out.println("[ì ‘ì†¡ì¤‘]");
+				JOptionPane.showMessageDialog(null, "ì´ë¯¸ ì ‘ì†ì¤‘ì¸ ê³„ì •ì…ë‹ˆë‹¤.!!");
 			}else {
-				JOptionPane.showMessageDialog(null, "·Î±×ÀÎ½ÇÆĞ !!");
+				JOptionPane.showMessageDialog(null, "ë¡œê·¸ì¸ì‹¤íŒ¨ !!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +77,7 @@ public class Client_Launcher {
 	}
 
 	public void join(String id, String password, String email, String nickname, String personalname, String year,
-			String month, String day, int user_pokemon) {// È¸¿ø°¡ÀÔ
+			String month, String day, int user_pokemon) {// íšŒì›ê°€ì…
 		try {
 			br = new BufferedReader(new InputStreamReader(soc.getInputStream()));
 			pw = new PrintWriter(soc.getOutputStream());
@@ -90,10 +90,10 @@ public class Client_Launcher {
 			System.out.println("msg : ");
 			System.out.println(msg);
 			if (msg != null && msg.equals("@joinOK")) {
-				JOptionPane.showMessageDialog(null, "È¸¿ø°¡ÀÔ ¼º°ø!!");
+				JOptionPane.showMessageDialog(null, "íšŒì›ê°€ì… ì„±ê³µ!!");
 				login_frame.setVisible(true);
 			} else {
-				JOptionPane.showMessageDialog(null, "È¸¿ø°¡ÀÔ ½ÇÆĞ !!");
+				JOptionPane.showMessageDialog(null, "íšŒì›ê°€ì… ì‹¤íŒ¨ !!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,7 +101,7 @@ public class Client_Launcher {
 	}
 
 	public void idfind(String email, String personalname, String year, String month, String day,
-			Window_UserSearch search_frame) {// ¾ÆÀÌµğÃ£±â
+			Window_UserSearch search_frame) {// ì•„ì´ë””ì°¾ê¸°
 		try {
 			br = new BufferedReader(new InputStreamReader(soc.getInputStream()));
 			pw = new PrintWriter(soc.getOutputStream());
@@ -122,27 +122,27 @@ public class Client_Launcher {
 					hiddenId[j] = "";
 					for (int i = 0; i < userIds[j].length(); i++) {
 						if (i > 2 && i < userIds[j].length() - 2) {
-							System.out.println("¼û±è");
+							System.out.println("ìˆ¨ê¹€");
 							hiddenId[j] += "*";
 						} else {
-							System.out.println("Ãß°¡");
+							System.out.println("ì¶”ê°€");
 							hiddenId[j] += userIds[j].charAt(i);
 						}
 					}
 					resultMsg += hiddenId[j]+"  ";
 				}
-				JOptionPane.showMessageDialog(null, "ÇØ´çµÇ´Â È¸¿øÀÇ ¾ÆÀÌµğ´Â :" + resultMsg + " ÀÔ´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "í•´ë‹¹ë˜ëŠ” íšŒì›ì˜ ì•„ì´ë””ëŠ” :" + resultMsg + " ì…ë‹ˆë‹¤.");
 				login_frame.setVisible(true);
 				search_frame.dispose();
 			} else {
-				JOptionPane.showMessageDialog(null, "ÀÔ·ÂÇÑ Á¤º¸¿¡ ÀÏÄ¡ÇÏ´Â È¸¿øÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì…ë ¥í•œ ì •ë³´ì— ì¼ì¹˜í•˜ëŠ” íšŒì›ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void pwfind(String id, String personalname, String year, String month, String day, Window_UserSearch search_frame) {// ºñ¹Ğ¹øÈ£Ã£±â
+	public void pwfind(String id, String personalname, String year, String month, String day, Window_UserSearch search_frame) {// ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°
 		try {
 			br = new BufferedReader(new InputStreamReader(soc.getInputStream()));
 			pw = new PrintWriter(soc.getOutputStream());
@@ -155,17 +155,17 @@ public class Client_Launcher {
 			System.out.println("msg : ");
 			System.out.println(msg);
 			if (msg != null && msg.equals("@pwFindOK")) {
-				JOptionPane.showMessageDialog(null, "ÇØ´çÀ¯Àú¿¡ µî·ÏµÇ¾îÀÖ´Â ÀÌ¸ŞÀÏ·Î ÀÓ½Ãºñ¹Ğ¹øÈ£¸¦ Àü¼ÛÇß½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "í•´ë‹¹ìœ ì €ì— ë“±ë¡ë˜ì–´ìˆëŠ” ì´ë©”ì¼ë¡œ ì„ì‹œë¹„ë°€ë²ˆí˜¸ë¥¼ ì „ì†¡í–ˆìŠµë‹ˆë‹¤.");
 				login_frame.setVisible(true);
 				search_frame.dispose();
 			} else {
-				JOptionPane.showMessageDialog(null, "ÀÔ·ÂÇÑ Á¤º¸¿¡ ÀÏÄ¡ÇÏ´Â È¸¿øÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì…ë ¥í•œ ì •ë³´ì— ì¼ì¹˜í•˜ëŠ” íšŒì›ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	//------------------------------±×¸²È­¸é------------------------
+	//------------------------------ê·¸ë¦¼í™”ë©´------------------------
 	
 	public static void main(String[] args) {
 		new Client_Launcher();
