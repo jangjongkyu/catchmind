@@ -29,6 +29,7 @@ public class Client_Launcher {
 	/*test3 test3 */
 	/*test4 test4 */
 	/*깃허브 한글테스트 입니다. */
+	/*한글*/
 	private Client_Telecom room_protocol;
 	public Client_Launcher() {
 		login_frame = new Window_Login(this);
