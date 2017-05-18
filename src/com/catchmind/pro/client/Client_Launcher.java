@@ -24,6 +24,8 @@ public class Client_Launcher {
 	private BufferedReader br;
 
 	private Window_Login login_frame;
+	/* test test */
+	/*hello my project*/
 
 	private Client_Telecom room_protocol;
 	public Client_Launcher() {
