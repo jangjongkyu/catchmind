@@ -28,6 +28,7 @@ public class Client_Launcher {
 	/*hello my project*/
 
 	private Client_Telecom room_protocol;
+	
 	public Client_Launcher() {
 		login_frame = new Window_Login(this);
 		login_frame.setVisible(true);
@@ -40,9 +41,11 @@ public class Client_Launcher {
 		}
 		//Thread th = new Thread(this);
 	}
+	
 	public Socket getSoc() {
 		return soc;
 	}
+	
 	public void setSoc(Socket soc) {
 		this.soc = soc;
 	}
